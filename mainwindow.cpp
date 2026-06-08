@@ -271,6 +271,10 @@ void MainWindow::updateTimer()
         ui->labelTimer->setText("SELESAI!");
         ui->labelTimerRemaining->setText("");
 
+        if (alarmSound->isPlaying()) {
+            alarmSound->stop();
+        }
+        
         alarmSound->play();
 
         QMessageBox msg(this);
@@ -278,9 +282,7 @@ void MainWindow::updateTimer()
         msg.setText("⏳ WAKTU TIMER HABIS!");
         msg.exec();
 
-
         alarmSound->stop();
-
     }
 }
 
@@ -319,54 +321,48 @@ void MainWindow::addAlarm()
 
 void MainWindow::checkAlarm()
 {
-    QString sekarangWaktu =
-        QTime::currentTime().toString("HH:mm:ss");
-
-    QString sekarangTanggal =
-        QDate::currentDate().toString("dd/MM/yyyy");
+    QString sekarangWaktu = QTime::currentTime().toString("HH:mm:ss");
+    QString sekarangTanggal = QDate::currentDate().toString("dd/MM/yyyy");
 
     for (int i = 0; i < ui->listAlarm->count(); i++)
     {
-        QListWidgetItem *item =
-            ui->listAlarm->item(i);
+        QListWidgetItem *item = ui->listAlarm->item(i);
+        AlarmCardWidget *card = qobject_cast<AlarmCardWidget*>(ui->listAlarm->itemWidget(item));
 
-        AlarmCardWidget *card =
-            qobject_cast<AlarmCardWidget*>(
-                ui->listAlarm->itemWidget(item));
-
-        if (!card)
-            continue;
+        if (!card) continue;
 
         QString tanggalAlarm = card->getDaysText();
         tanggalAlarm.remove("📅 ");
         tanggalAlarm = tanggalAlarm.trimmed();
 
-        QString alarmKey =
-            tanggalAlarm + "_" +
-            card->getTimeText();
+        QString alarmKey = tanggalAlarm + "_" + card->getTimeText();
 
+        // 1. Kondisi ketika alarm HARUS BUNYI
         if (card->getTimeText() == sekarangWaktu &&
-            tanggalAlarm == sekarangTanggal &&
-            card->isAlarmActive() &&
-            !alarmSudahBunyi.contains(alarmKey))
+            tanggalAlarm == sekarangTanggal)
         {
-            alarmSudahBunyi.insert(alarmKey);
+            if (card->isAlarmActive() && !alarmSudahBunyi.contains(alarmKey))
+            {
+                alarmSudahBunyi.insert(alarmKey);
 
-            // Mainkan suara
-            alarmSound->play();
+                alarmSound->play();
 
-            // Tampilkan popup
-            QMessageBox msg(this);
-            msg.setWindowTitle("Alarm");
-            msg.setText("🔔 WAKTU SUDAH TIBA!");
-            msg.exec();
+                QMessageBox msg(this);
+                msg.setWindowTitle("Alarm");
+                msg.setText("🔔 WAKTU SUDAH TIBA!");
+                msg.exec();
 
-            // Hentikan suara setelah popup ditutup
-            alarmSound->stop();
+                alarmSound->stop();
+            }
+        }
+        else 
+        {
+            if (alarmSudahBunyi.contains(alarmKey)) {
+                alarmSudahBunyi.remove(alarmKey);
+            }
         }
     }
-}
-void MainWindow::deleteAlarm()
+}void MainWindow::deleteAlarm()
 {
     QListWidgetItem *item = ui->listAlarm->currentItem();
     if (!item) return;
