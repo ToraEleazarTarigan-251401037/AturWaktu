@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //connect kan tombol button
     //percantik ui nya button alarm
+    //Tambah fitur
 
     ui->btnStartSW->setStyleSheet(gradientPrimaryStyle);
     ui->btnStartTimer->setStyleSheet(gradientPrimaryStyle);
