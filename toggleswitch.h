@@ -32,7 +32,6 @@ protected:
         }
     }
 
-
     void paintEvent(QPaintEvent *event) override {
         Q_UNUSED(event);
         QPainter painter(this);

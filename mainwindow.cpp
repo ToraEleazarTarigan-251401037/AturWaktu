@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    loadAlarms();
+
     ui->dateEditAlarm->setDate(QDate::currentDate());
     ui->dateEditAlarm->setMinimumDate(QDate::currentDate());
 
@@ -61,11 +63,8 @@ MainWindow::MainWindow(QWidget *parent)
         "}"
         "QPushButton:hover { opacity: 0.9; }";
 
-    //connect kan tombol button
-    //percantik ui nya button alarm
-    //Tambah fitur
-    //Apa aja lah
 
+    //percantik ui nya button alarm
     ui->btnStartSW->setStyleSheet(gradientPrimaryStyle);
     ui->btnStartTimer->setStyleSheet(gradientPrimaryStyle);
     ui->btnAddAlarm->setStyleSheet(gradientPrimaryStyle);
@@ -120,6 +119,7 @@ MainWindow::MainWindow(QWidget *parent)
         );
 
 
+
     timer = new QTimer(this);
     timer->setInterval(10);
     connect(timer, &QTimer::timeout, this, &MainWindow::updateWaktu);
@@ -156,8 +156,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->listLap->addItem(teks);
         ui->listLap->scrollToBottom();
     });
-
-
 
 
     countdownTimer = new QTimer(this);
@@ -286,6 +284,88 @@ void MainWindow::updateTimer()
     }
 }
 
+void MainWindow::saveAlarms()
+{
+    QJsonArray alarmArray;
+
+    for(int i = 0; i < ui->listAlarm->count(); i++)
+    {
+        QListWidgetItem *item = ui->listAlarm->item(i);
+
+        AlarmCardWidget *card =
+            qobject_cast<AlarmCardWidget*>(
+                ui->listAlarm->itemWidget(item));
+
+        if(!card)
+            continue;
+
+        QJsonObject alarm;
+
+        alarm["time"] = card->getTimeText();
+        alarm["date"] = card->getDaysText();
+        alarm["active"] = card->isAlarmActive();
+
+        alarmArray.append(alarm);
+    }
+
+    QFile file("alarms.json");
+
+    if(file.open(QIODevice::WriteOnly))
+    {
+        file.write(
+            QJsonDocument(alarmArray).toJson());
+
+        file.close();
+    }
+}
+
+void MainWindow::loadAlarms()
+{
+    QFile file("alarms.json");
+
+    if(!file.open(QIODevice::ReadOnly))
+        return;
+
+    QByteArray data = file.readAll();
+
+    file.close();
+
+    QJsonArray alarmArray =
+        QJsonDocument::fromJson(data).array();
+
+    for(auto value : alarmArray)
+    {
+        QJsonObject alarm =
+            value.toObject();
+
+        QListWidgetItem *item =
+            new QListWidgetItem();
+
+        AlarmCardWidget *card =
+            new AlarmCardWidget(
+                alarm["time"].toString(),
+                alarm["date"].toString(),
+                alarm["active"].toBool(),
+                this);
+
+        item->setSizeHint(card->sizeHint());
+
+        ui->listAlarm->addItem(item);
+
+        ui->listAlarm->setItemWidget(
+            item,
+            card);
+
+        connect(card,
+                &AlarmCardWidget::deletePressed,
+                [=]()
+                {
+                    delete item;
+                    saveAlarms();
+                });
+    }
+}
+
 void MainWindow::addAlarm()
 {
     QTime waktu = ui->timeEditAlarm->time();
@@ -316,9 +396,18 @@ void MainWindow::addAlarm()
             [=]()
             {
                 delete item;
+                saveAlarms();
             });
-}
 
+    connect(card,
+            &AlarmCardWidget::alarmStateChanged,
+            this,
+            [=]()
+            {
+                saveAlarms();
+            });
+    saveAlarms(); // simpan setelah tambah
+}
 void MainWindow::checkAlarm()
 {
     QString sekarangWaktu = QTime::currentTime().toString("HH:mm:ss");
@@ -368,45 +457,7 @@ void MainWindow::checkAlarm()
     if (!item) return;
     delete item;
 }
-// void MainWindow::editAlarm()
-// {
-//     QListWidgetItem *item = ui->listAlarm->currentItem();
 
-//     if (!item)
-//         return;
-
-//     AlarmCardWidget *oldCard =
-//         qobject_cast<AlarmCardWidget*>(
-//             ui->listAlarm->itemWidget(item));
-
-//     if (!oldCard)
-//         return;
-
-//     QString waktuBaru =
-//         ui->timeEditAlarm->time()
-//             .toString("HH:mm:ss");
-
-//     QString hari =
-//         oldCard->getDaysText();
-
-//     bool aktif =
-//         oldCard->isAlarmActive();
-
-//     AlarmCardWidget *newCard =
-//         new AlarmCardWidget(
-//             waktuBaru,
-//             hari,
-//             aktif,
-//             this);
-
-//     item->setSizeHint(newCard->sizeHint());
-
-//     ui->listAlarm->setItemWidget(
-//         item,
-//         newCard);
-
-//     delete oldCard;
-// }
 void MainWindow::editAlarm()
 {
     QListWidgetItem *item =

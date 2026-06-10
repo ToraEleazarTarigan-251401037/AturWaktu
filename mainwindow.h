@@ -6,6 +6,10 @@
 #include <QListWidgetItem>
 #include <QSet>
 #include <QSoundEffect>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QFile>
 
 
 
@@ -50,6 +54,10 @@ private:
     QListWidgetItem *selectedAlarmItem = nullptr;
     QSet<QString> alarmSudahBunyi;
     QSoundEffect *alarmSound;
+
+    void saveAlarms();
+    void loadAlarms();
+
 
 };
 

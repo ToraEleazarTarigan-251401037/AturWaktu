@@ -94,8 +94,18 @@ public:
         mainLayout->setContentsMargins(8, 4, 8, 4);
         mainLayout->addWidget(container);
 
+        connect(toggleSwitch,
+                &ToggleSwitch::toggled,
+                this,
+                &AlarmCardWidget::updateCardStyle);
 
-        connect(toggleSwitch, &ToggleSwitch::toggled, this, &AlarmCardWidget::updateCardStyle);
+        connect(toggleSwitch,
+                &ToggleSwitch::toggled,
+                this,
+                [=]()
+                {
+                    emit alarmStateChanged();
+                });
         connect(btnDelete, &QPushButton::clicked, this, &AlarmCardWidget::deletePressed);
 
         updateCardStyle(isOn);
@@ -117,6 +127,7 @@ public:
 
 signals:
     void deletePressed();
+    void alarmStateChanged();
 
 private slots:
     void updateCardStyle(bool checked) {
