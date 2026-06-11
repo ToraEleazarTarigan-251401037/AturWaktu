@@ -830,8 +830,8 @@ AturWaktu_autogen/timestamp: C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-  C:/Users/ASUS/AturWaktu/CMakeLists.txt \
-  C:/Users/ASUS/AturWaktu/alarmcardwidget.h \
+  C:/Users/mutia/AturWaktu/CMakeLists.txt \
+  C:/Users/mutia/AturWaktu/alarmcardwidget.h \
   .qtcreator/cmake-helper/maintenance_tool_provider.cmake \
   .qtcreator/cmake-helper/package-manager.cmake \
   .qtcreator/cmake-helper/qtcreator-project.cmake \
@@ -839,12 +839,12 @@ AturWaktu_autogen/timestamp: C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
   CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
   CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
   CMakeFiles/3.30.5/CMakeSystem.cmake \
-  C:/Users/ASUS/AturWaktu/main.cpp \
-  C:/Users/ASUS/AturWaktu/mainwindow.cpp \
-  C:/Users/ASUS/AturWaktu/mainwindow.h \
-  C:/Users/ASUS/AturWaktu/mainwindow.ui \
-  C:/Users/ASUS/AturWaktu/resources.qrc \
-  C:/Users/ASUS/AturWaktu/toggleswitch.h
+  C:/Users/mutia/AturWaktu/main.cpp \
+  C:/Users/mutia/AturWaktu/mainwindow.cpp \
+  C:/Users/mutia/AturWaktu/mainwindow.h \
+  C:/Users/mutia/AturWaktu/mainwindow.ui \
+  C:/Users/mutia/AturWaktu/resources.qrc \
+  C:/Users/mutia/AturWaktu/toggleswitch.h
 
 
 C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in:
@@ -1237,6 +1237,8 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/exp_i
 
 C:/Qt/6.11.1/mingw_64/lib/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersion.cmake:
 
+C:/Users/mutia/AturWaktu/alarmcardwidget.h:
+
 C:/Qt/6.11.1/mingw_64/include/QtCore/qnumeric.h:
 
 C:/Qt/6.11.1/mingw_64/include/QtCore/qttranslation.h:
@@ -1272,6 +1274,8 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/modif
 C:/Qt/6.11.1/mingw_64/include/QtCore/qrect.h:
 
 C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstyleoption.h:
+
+C:/Users/mutia/AturWaktu/CMakeLists.txt:
 
 C:/Qt/6.11.1/mingw_64/include/QtCore/qrefcount.h:
 
@@ -1317,8 +1321,6 @@ C:/Qt/6.11.1/mingw_64/include/QtCore/qutf8stringview.h:
 
 C:/Qt/6.11.1/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake:
 
-C:/Users/ASUS/AturWaktu/mainwindow.h:
-
 C:/Qt/6.11.1/mingw_64/include/QtCore/qstring.h:
 
 C:/Qt/6.11.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
@@ -1342,8 +1344,6 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_
 C:/Qt/6.11.1/mingw_64/include/QtCore/qstringfwd.h:
 
 C:/Qt/6.11.1/mingw_64/include/QtCore/qstringlist.h:
-
-C:/Users/ASUS/AturWaktu/mainwindow.ui:
 
 C:/Qt/6.11.1/mingw_64/include/QtCore/qstringmatcher.h:
 
@@ -1456,6 +1456,8 @@ C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp:
 C:/Qt/6.11.1/mingw_64/include/QtCore/quuid.h:
 
 C:/Qt/6.11.1/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:
+
+C:/Users/mutia/AturWaktu/mainwindow.h:
 
 C:/Qt/6.11.1/mingw_64/include/QtCore/qvariant.h:
 
@@ -1718,8 +1720,6 @@ C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtwidgets-config.h:
 C:/Qt/6.11.1/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake:
 
 C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtwidgetsexports.h:
-
-C:/Users/ASUS/AturWaktu/main.cpp:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bit:
 
@@ -2321,8 +2321,6 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/func
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h:
 
-C:/Users/ASUS/AturWaktu/mainwindow.cpp:
-
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/quoted_string.h:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/invoke.h:
@@ -2521,16 +2519,18 @@ C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h:
 
 C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h:
 
-C:/Users/ASUS/AturWaktu/toggleswitch.h:
-
-C:/Users/ASUS/AturWaktu/CMakeLists.txt:
-
-C:/Users/ASUS/AturWaktu/alarmcardwidget.h:
-
 AturWaktu_autogen/moc_predefs.h:
 
 CMakeFiles/3.30.5/CMakeRCCompiler.cmake:
 
 CMakeFiles/3.30.5/CMakeSystem.cmake:
 
-C:/Users/ASUS/AturWaktu/resources.qrc:
+C:/Users/mutia/AturWaktu/main.cpp:
+
+C:/Users/mutia/AturWaktu/mainwindow.cpp:
+
+C:/Users/mutia/AturWaktu/mainwindow.ui:
+
+C:/Users/mutia/AturWaktu/resources.qrc:
+
+C:/Users/mutia/AturWaktu/toggleswitch.h:

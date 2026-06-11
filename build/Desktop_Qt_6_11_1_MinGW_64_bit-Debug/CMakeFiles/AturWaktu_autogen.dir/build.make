@@ -52,10 +52,10 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ASUS\AturWaktu
+CMAKE_SOURCE_DIR = C:\Users\mutia\AturWaktu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ASUS\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug
+CMAKE_BINARY_DIR = C:\Users\mutia\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug
 
 # Utility rule file for AturWaktu_autogen.
 
@@ -70,9 +70,9 @@ CMakeFiles/AturWaktu_autogen: AturWaktu_autogen/timestamp
 AturWaktu_autogen/timestamp: C:/Qt/6.11.1/mingw_64/bin/moc.exe
 AturWaktu_autogen/timestamp: C:/Qt/6.11.1/mingw_64/bin/uic.exe
 AturWaktu_autogen/timestamp: CMakeFiles/AturWaktu_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\ASUS\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target AturWaktu"
-	C:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen C:/Users/ASUS/AturWaktu/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/CMakeFiles/AturWaktu_autogen.dir/AutogenInfo.json Debug
-	C:\Qt\Tools\CMake_64\bin\cmake.exe -E touch C:/Users/ASUS/AturWaktu/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/AturWaktu_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\mutia\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target AturWaktu"
+	C:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autogen C:/Users/mutia/AturWaktu/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/CMakeFiles/AturWaktu_autogen.dir/AutogenInfo.json Debug
+	C:\Qt\Tools\CMake_64\bin\cmake.exe -E touch C:/Users/mutia/AturWaktu/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/AturWaktu_autogen/timestamp
 
 AturWaktu_autogen: AturWaktu_autogen/timestamp
 AturWaktu_autogen: CMakeFiles/AturWaktu_autogen
@@ -88,6 +88,6 @@ CMakeFiles/AturWaktu_autogen.dir/clean:
 .PHONY : CMakeFiles/AturWaktu_autogen.dir/clean
 
 CMakeFiles/AturWaktu_autogen.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ASUS\AturWaktu C:\Users\ASUS\AturWaktu C:\Users\ASUS\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug C:\Users\ASUS\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug C:\Users\ASUS\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles\AturWaktu_autogen.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\mutia\AturWaktu C:\Users\mutia\AturWaktu C:\Users\mutia\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug C:\Users\mutia\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug C:\Users\mutia\AturWaktu\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles\AturWaktu_autogen.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/AturWaktu_autogen.dir/depend
 

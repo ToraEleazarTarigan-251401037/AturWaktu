@@ -144,16 +144,21 @@ MainWindow::MainWindow(QWidget *parent)
     // Stopwatch
     // ==================================================
 
-
+    // Timer stopwatch berjalan setiap 10 ms
     timer = new QTimer(this);
     timer->setInterval(10);
+    // Hubungkan timer ke fungsi update tampilan stopwatch
     connect(timer, &QTimer::timeout, this, &MainWindow::updateWaktu);
 
+
+    // Tombol Start/Pause Stopwatch
     connect(ui->btnStartSW, &QPushButton::clicked, this, [=]() {
+        // Jika stopwatch sedang berjalan maka hentikan
         if (isRunning) {
             timer->stop();
             ui->btnStartSW->setText("Start");
             isRunning = false;
+        // Jika stopwatch berhenti maka mulai kembali
         } else {
             timer->start();
             ui->btnStartSW->setText("Pause");
@@ -277,10 +282,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 void MainWindow::updateWaktu()
-{
+{   // Menambah waktu stopwatch setiap 10 ms
     detik++;
+    // Menghitung centisecond (1/100 detik)
     int cs   =  detik % 100;
+    // Menghitung detik (0 - 59)
     int secs = (detik / 100) % 60;
+    // Menghitung menit
     int mins = (detik / 100) / 60;
     ui->labelStopwatch->setText(QString("%1:%2.%3").arg(mins, 2, 10, QChar('0')).arg(secs, 2, 10, QChar('0')).arg(cs, 2, 10, QChar('0')));
 }
