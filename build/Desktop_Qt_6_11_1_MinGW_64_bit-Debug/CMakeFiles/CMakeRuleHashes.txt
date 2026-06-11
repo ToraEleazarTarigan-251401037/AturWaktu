@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+529fd1826aedd5d60e3a5f23cab1172c AturWaktu_autogen/EWIEGA46WW/qrc_resources.cpp
+8e50ed1e5f9f73cdc99208bc59262049 AturWaktu_autogen/timestamp
+f1084a37acfd98da543c7ff2db32e526 CMakeFiles/AturWaktu_autogen

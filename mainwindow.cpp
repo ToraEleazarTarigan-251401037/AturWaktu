@@ -4,19 +4,34 @@
 #include <QMessageBox>
 #include "alarmcardwidget.h"
 
+// ======================================================
+// Constructor Main Window
+// ======================================================
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    // ==================================================
+    // Load Data Alarm
+    // ==================================================
+
     loadAlarms();
+
+    // ==================================================
+    // Inisialisasi Input Alarm
+    // ==================================================
 
     ui->dateEditAlarm->setDate(QDate::currentDate());
     ui->dateEditAlarm->setMinimumDate(QDate::currentDate());
-
     ui->timeEditAlarm->setTime(QTime::currentTime());
 
+    // ==================================================
+    // Styling Tab Widget
+    // ==================================================
 
     ui->tabAturWaktu->setStyleSheet(R"(
         QTabWidget::pane {
@@ -48,13 +63,20 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->centralWidget()->setStyleSheet("background-color: #f8f7fc;");
 
-     ui->labelTitle->setStyleSheet("font-size: 22px; font-weight: bold; color: #14121e;");
+    // ==================================================
+    // Styling Label
+    // ==================================================
+
+    ui->labelTitle->setStyleSheet("font-size: 22px; font-weight: bold; color: #14121e;");
     ui->labelStopwatch->setStyleSheet("font-size: 52px; font-weight: bold; color: #14121e;");
     ui->labelTimer->setStyleSheet("font-size: 52px; font-weight: bold; color: #14121e;");
     ui->labelTimerRemaining->setStyleSheet("font-size: 12px; color: #a09eaa;");
     ui->labelSWHeader->setStyleSheet("font-size: 12px; font-weight: bold; color: #a09eaa; letter-spacing: 1px;");
     ui->labelTimerHeader->setStyleSheet("font-size: 12px; font-weight: bold; color: #a09eaa; letter-spacing: 1px;");
 
+    // ==================================================
+    // Styling Tombol Utama
+    // ==================================================
 
     QString gradientPrimaryStyle =
         "QPushButton {"
@@ -118,6 +140,9 @@ MainWindow::MainWindow(QWidget *parent)
         "}"
         );
 
+    // ==================================================
+    // Stopwatch
+    // ==================================================
 
 
     timer = new QTimer(this);
@@ -157,6 +182,11 @@ MainWindow::MainWindow(QWidget *parent)
         ui->listLap->scrollToBottom();
     });
 
+
+
+    // ==================================================
+    // Countdown Timer
+    // ==================================================
 
     countdownTimer = new QTimer(this);
     countdownTimer->setInterval(1000);
