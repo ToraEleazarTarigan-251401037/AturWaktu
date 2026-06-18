@@ -13,13 +13,17 @@
 class AlarmCardWidget : public QWidget {
     Q_OBJECT
 public:
-    AlarmCardWidget(const QString &timeStr, const QString &daysStr, bool isOn = true, QWidget *parent = nullptr)
+    AlarmCardWidget(const QString &titleStr,
+                    const QString &timeStr,
+                    const QString &daysStr,
+                    bool isOn = true,
+                    QWidget *parent = nullptr)
         : QWidget(parent)
     {
         // 1. Container Utama (Card Putih)
         container = new QFrame(this);
         container->setObjectName("AlarmCard");
-        container->setMinimumHeight(85);
+        container->setMinimumHeight(115);
         container->setStyleSheet(
             "QFrame#AlarmCard {"
             "   background-color: white;"
@@ -40,13 +44,26 @@ public:
 
         // 3. Layout Teks Vertikal (Jam & Hari)
         QVBoxLayout *textLayout = new QVBoxLayout();
-        textLayout->setSpacing(4);
+        textLayout->setSpacing(3);
         textLayout->setContentsMargins(0, 2, 0, 2);
 
+        titleLabel = new QLabel(titleStr, container);
+        titleLabel->setStyleSheet(
+            "font-size: 15px;"
+            "font-weight: bold;"
+            "color: #5d5a88;"
+            );
+
         timeLabel = new QLabel(timeStr, container);
+
         descLabel = new QLabel(daysStr, container);
+        descLabel->setStyleSheet(
+            "font-size: 13px;"
+            "color: #a09eaa;"
+            "font-family: 'Segoe UI', 'Inter';");
         descLabel->setStyleSheet("font-size: 13px; color: #a09eaa; font-family: 'Segoe UI', 'Inter';");
 
+        textLayout->addWidget(titleLabel);
         textLayout->addWidget(timeLabel);
         textLayout->addWidget(descLabel);
 
@@ -112,6 +129,10 @@ public:
     }
 
     QString getTimeText() const { return timeLabel->text(); }
+    QString getTitleText() const
+    {
+        return titleLabel->text();
+    }
 
     void setTimeText(const QString &text)
     {
@@ -122,8 +143,9 @@ public:
 
 
     QSize sizeHint() const override {
-        return QSize(width(), 97);
+        return QSize(width(), 125);
     }
+
 
 signals:
     void deletePressed();
@@ -143,6 +165,7 @@ private slots:
 private:
     QFrame *container;
     QLabel *iconLabel;
+    QLabel *titleLabel;
     QLabel *timeLabel;
     QLabel *descLabel;
     ToggleSwitch *toggleSwitch;

@@ -73,6 +73,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->labelTimerRemaining->setStyleSheet("font-size: 12px; color: #a09eaa;");
     ui->labelSWHeader->setStyleSheet("font-size: 12px; font-weight: bold; color: #a09eaa; letter-spacing: 1px;");
     ui->labelTimerHeader->setStyleSheet("font-size: 12px; font-weight: bold; color: #a09eaa; letter-spacing: 1px;");
+    ui->lineEditAlarmTitle->setStyleSheet(
+        "background:white;"
+        "color:#14121e;"
+        "border:2px solid #d9c8ff;"
+        "border-radius:10px;"
+        "padding:6px;");
 
     // ==================================================
     // Styling Tombol Utama
@@ -339,6 +345,7 @@ void MainWindow::saveAlarms()
 
         QJsonObject alarm;
 
+        alarm["title"] = card->getTitleText();
         alarm["time"] = card->getTimeText();
         alarm["date"] = card->getDaysText();
         alarm["active"] = card->isAlarmActive();
@@ -381,11 +388,11 @@ void MainWindow::loadAlarms()
 
         AlarmCardWidget *card =
             new AlarmCardWidget(
+                alarm["title"].toString(),
                 alarm["time"].toString(),
                 alarm["date"].toString(),
                 alarm["active"].toBool(),
                 this);
-
         item->setSizeHint(card->sizeHint());
 
         ui->listAlarm->addItem(item);
@@ -417,8 +424,17 @@ void MainWindow::addAlarm()
     QListWidgetItem *item =
         new QListWidgetItem(ui->listAlarm);
 
+    QString title =
+        ui->lineEditAlarmTitle->text();
+
+    if(title.trimmed().isEmpty())
+    {
+        title = "Alarm";
+    }
+
     AlarmCardWidget *card =
         new AlarmCardWidget(
+            title,
             timeStr,
             daysStr,
             true,
@@ -444,6 +460,7 @@ void MainWindow::addAlarm()
             {
                 saveAlarms();
             });
+    ui->lineEditAlarmTitle->clear();
     saveAlarms(); // simpan setelah tambah
 }
 void MainWindow::checkAlarm()

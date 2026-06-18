@@ -246,6 +246,13 @@ QFrame#divider {
            </widget>
           </item>
           <item>
+           <widget class="QLineEdit" name="lineEditAlarmTitle">
+            <property name="placeholderText">
+             <string>Masukkan judul alarm...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QListWidget" name="listAlarm"/>
           </item>
          </layout>
@@ -292,7 +299,7 @@ QFrame#divider {
            <widget class="QDateEdit" name="dateEditAlarm">
             <property name="dateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>10</hour>
               <minute>0</minute>
               <second>0</second>
               <year>2025</year>
@@ -417,6 +424,15 @@ QFrame#divider {
                 </brush>
                </colorrole>
                <colorrole role="Shadow">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+               <colorrole role="Highlight">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
                   <red>0</red>
@@ -580,6 +596,15 @@ QFrame#divider {
                  </color>
                 </brush>
                </colorrole>
+               <colorrole role="Highlight">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
                <colorrole role="AlternateBase">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
@@ -727,6 +752,15 @@ QFrame#divider {
                 </brush>
                </colorrole>
                <colorrole role="Shadow">
+                <brush brushstyle="SolidPattern">
+                 <color alpha="255">
+                  <red>0</red>
+                  <green>0</green>
+                  <blue>0</blue>
+                 </color>
+                </brush>
+               </colorrole>
+               <colorrole role="Highlight">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
                   <red>0</red>
